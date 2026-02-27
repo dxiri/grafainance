@@ -1,0 +1,1092 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "description": "Forex currency pairs and cryptocurrency tracking with candlestick charts",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Market Overview",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/market-overview/market-overview-sentiment"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Macro & Yields",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/macro-yields/macro-yield-curves"
+    }
+  ],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 100,
+      "panels": [],
+      "title": "Major Currency Pairs",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Euro vs US Dollar - 1 hour candles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "colors": {
+          "down": "#f85149",
+          "flat": "#8b949e",
+          "up": "#3fb950"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "open",
+              "text": "Open",
+              "type": "number"
+            },
+            {
+              "selector": "high",
+              "text": "High",
+              "type": "number"
+            },
+            {
+              "selector": "low",
+              "text": "Low",
+              "type": "number"
+            },
+            {
+              "selector": "close",
+              "text": "Close",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=EUR/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "EUR/USD",
+      "type": "candlestick"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "British Pound vs US Dollar - 1 hour candles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "colors": {
+          "down": "#f85149",
+          "flat": "#8b949e",
+          "up": "#3fb950"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "open",
+              "text": "Open",
+              "type": "number"
+            },
+            {
+              "selector": "high",
+              "text": "High",
+              "type": "number"
+            },
+            {
+              "selector": "low",
+              "text": "Low",
+              "type": "number"
+            },
+            {
+              "selector": "close",
+              "text": "Close",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=GBP/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "GBP/USD",
+      "type": "candlestick"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "US Dollar vs Japanese Yen - 1 hour candles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 3,
+      "options": {
+        "colors": {
+          "down": "#f85149",
+          "flat": "#8b949e",
+          "up": "#3fb950"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "open",
+              "text": "Open",
+              "type": "number"
+            },
+            {
+              "selector": "high",
+              "text": "High",
+              "type": "number"
+            },
+            {
+              "selector": "low",
+              "text": "Low",
+              "type": "number"
+            },
+            {
+              "selector": "close",
+              "text": "Close",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=USD/JPY&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "USD/JPY",
+      "type": "candlestick"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "US Dollar vs Canadian Dollar - 1 hour candles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "id": 4,
+      "options": {
+        "colors": {
+          "down": "#f85149",
+          "flat": "#8b949e",
+          "up": "#3fb950"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "open",
+              "text": "Open",
+              "type": "number"
+            },
+            {
+              "selector": "high",
+              "text": "High",
+              "type": "number"
+            },
+            {
+              "selector": "low",
+              "text": "Low",
+              "type": "number"
+            },
+            {
+              "selector": "close",
+              "text": "Close",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=USD/CAD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "USD/CAD",
+      "type": "candlestick"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "US Dollar vs Costa Rican Colon - 1 hour candles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 9
+      },
+      "id": 5,
+      "options": {
+        "colors": {
+          "down": "#f85149",
+          "flat": "#8b949e",
+          "up": "#3fb950"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "open",
+              "text": "Open",
+              "type": "number"
+            },
+            {
+              "selector": "high",
+              "text": "High",
+              "type": "number"
+            },
+            {
+              "selector": "low",
+              "text": "Low",
+              "type": "number"
+            },
+            {
+              "selector": "close",
+              "text": "Close",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=USD/CRC&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "USD/CRC (Costa Rica)",
+      "type": "candlestick"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 101,
+      "panels": [],
+      "title": "Cryptocurrency",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Bitcoin vs US Dollar - 1 hour candles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 18
+      },
+      "id": 7,
+      "options": {
+        "colors": {
+          "down": "#f85149",
+          "flat": "#8b949e",
+          "up": "#3fb950"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "open",
+              "text": "Open",
+              "type": "number"
+            },
+            {
+              "selector": "high",
+              "text": "High",
+              "type": "number"
+            },
+            {
+              "selector": "low",
+              "text": "Low",
+              "type": "number"
+            },
+            {
+              "selector": "close",
+              "text": "Close",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=BTC/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "BTC/USD",
+      "type": "candlestick"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Ethereum vs US Dollar - 1 hour candles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 18
+      },
+      "id": 8,
+      "options": {
+        "colors": {
+          "down": "#f85149",
+          "flat": "#8b949e",
+          "up": "#3fb950"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "open",
+              "text": "Open",
+              "type": "number"
+            },
+            {
+              "selector": "high",
+              "text": "High",
+              "type": "number"
+            },
+            {
+              "selector": "low",
+              "text": "Low",
+              "type": "number"
+            },
+            {
+              "selector": "close",
+              "text": "Close",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=ETH/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "ETH/USD",
+      "type": "candlestick"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Monero vs US Dollar - 1 hour candles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-orange",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 18
+      },
+      "id": 9,
+      "options": {
+        "colors": {
+          "down": "#f85149",
+          "flat": "#8b949e",
+          "up": "#3fb950"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "open",
+              "text": "Open",
+              "type": "number"
+            },
+            {
+              "selector": "high",
+              "text": "High",
+              "type": "number"
+            },
+            {
+              "selector": "low",
+              "text": "Low",
+              "type": "number"
+            },
+            {
+              "selector": "close",
+              "text": "Close",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=XMR/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "XMR/USD (Monero)",
+      "type": "candlestick"
+    }
+  ],
+  "refresh": "1h",
+  "schemaVersion": 38,
+  "tags": [
+    "financial",
+    "forex",
+    "crypto"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Forex & Crypto Monitor",
+  "uid": "forex-crypto",
+  "version": 1,
+  "weekStart": ""
+}

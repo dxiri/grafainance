@@ -1,0 +1,44 @@
+# Grafana Datasources Provisioning
+# This file is automatically loaded by Grafana on startup
+
+apiVersion: 1
+
+datasources:
+  # InfluxDB for Fear & Greed Index data
+  - name: InfluxDB
+    uid: influxdb
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    jsonData:
+      version: Flux
+      organization: ${INFLUX_ORG}
+      defaultBucket: ${INFLUX_BUCKET}
+    secureJsonData:
+      token: ${INFLUX_TOKEN}
+    isDefault: false
+
+  # Infinity Datasource for Twelve Data API
+  - name: TwelveData
+    uid: twelvedata
+    type: yesoreyeram-infinity-datasource
+    access: proxy
+    isDefault: true
+    jsonData:
+      oauthPassThru: false
+    secureJsonData:
+      # API key stored securely - use in URLs as: ${__env.TWELVE_DATA_API_KEY}
+      httpHeaderValue1: "${TWELVE_DATA_API_KEY}"
+    editable: true
+
+  # Infinity Datasource for FRED API
+  - name: FRED
+    uid: fred
+    type: yesoreyeram-infinity-datasource
+    access: proxy
+    isDefault: false
+    jsonData:
+      oauthPassThru: false
+    secureJsonData:
+      httpHeaderValue1: "${FRED_API_KEY}"
+    editable: true

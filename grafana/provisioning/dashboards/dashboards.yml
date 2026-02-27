@@ -1,0 +1,17 @@
+# Grafana Dashboard Provisioning
+# This file tells Grafana where to find dashboard JSON files
+
+apiVersion: 1
+
+providers:
+  - name: 'Grafainance Dashboards'
+    orgId: 1
+    folder: 'Financial Markets'
+    folderUid: 'financial-markets'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 3600
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards
+      foldersFromFilesStructure: false

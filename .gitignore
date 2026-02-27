@@ -1,0 +1,39 @@
+# Environment files with secrets
+.env
+*.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+
+# Docker volumes (if extracted)
+influxdb_data/
+grafana_data/
+
+# Backups
+backups/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/

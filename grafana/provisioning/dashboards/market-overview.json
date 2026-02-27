@@ -1,0 +1,1868 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Instant read on Risk On vs Risk Off - Fear & Greed, VIX, and Major Indexes",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Forex & Crypto",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/forex-crypto/forex-crypto-monitor"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Macro & Yields",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/macro-yields/macro-yield-curves"
+    }
+  ],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 100,
+      "panels": [],
+      "title": "Market Sentiment",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb"
+      },
+      "description": "CNN Fear & Greed Index - 0 (Extreme Fear) to 100 (Extreme Greed)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d32f2f",
+                "value": 0
+              },
+              {
+                "color": "#ff5722",
+                "value": 25
+              },
+              {
+                "color": "#ffc107",
+                "value": 45
+              },
+              {
+                "color": "#8bc34a",
+                "value": 55
+              },
+              {
+                "color": "#4caf50",
+                "value": 75
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb"
+          },
+          "query": "from(bucket: \"market_sentiment\")\n  |> range(start: -7d)\n  |> filter(fn: (r) => r._measurement == \"fear_greed\")\n  |> filter(fn: (r) => r._field == \"score\")\n  |> last()",
+          "refId": "A"
+        }
+      ],
+      "title": "Fear & Greed Index",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb"
+      },
+      "description": "Current sentiment rating",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "#d32f2f",
+                  "text": "Extreme Fear"
+                },
+                "to": 24
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 25,
+                "result": {
+                  "color": "#ff5722",
+                  "text": "Fear"
+                },
+                "to": 44
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 45,
+                "result": {
+                  "color": "#ffc107",
+                  "text": "Neutral"
+                },
+                "to": 55
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 56,
+                "result": {
+                  "color": "#8bc34a",
+                  "text": "Greed"
+                },
+                "to": 74
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 75,
+                "result": {
+                  "color": "#4caf50",
+                  "text": "Extreme Greed"
+                },
+                "to": 100
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d32f2f",
+                "value": 0
+              },
+              {
+                "color": "#ff5722",
+                "value": 25
+              },
+              {
+                "color": "#ffc107",
+                "value": 45
+              },
+              {
+                "color": "#8bc34a",
+                "value": 56
+              },
+              {
+                "color": "#4caf50",
+                "value": 75
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb"
+          },
+          "query": "from(bucket: \"market_sentiment\")\n  |> range(start: -7d)\n  |> filter(fn: (r) => r._measurement == \"fear_greed\")\n  |> filter(fn: (r) => r._field == \"score\")\n  |> last()",
+          "refId": "A"
+        }
+      ],
+      "title": "Sentiment",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "CBOE Volatility Index - measures market fear/uncertainty",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "VIX",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=VIXCLS&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=90",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "VIX - Volatility Index",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Current VIX level",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 5
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "value",
+              "text": "VIX",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=VIXCLS&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Current VIX",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 101,
+      "panels": [],
+      "title": "Major Indexes",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "S&P 500 Index (via SPY ETF)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 10
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "close",
+              "text": "SPY",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=SPY&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "S&P 500 (SPY)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Nikkei 225 Index (via EWJ ETF)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 10
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "close",
+              "text": "EWJ",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=EWJ&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Japan (EWJ)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "MSCI World Index (via URTH ETF)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 10
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "close",
+              "text": "URTH",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=URTH&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "MSCI World (URTH)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "MSCI China Index (via MCHI ETF)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 10
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "close",
+              "text": "MCHI",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=MCHI&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "MSCI China (MCHI)",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 103,
+      "panels": [],
+      "title": "Stocks",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Akamai Technologies Stock",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 17
+      },
+      "id": 102,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "close",
+              "text": "AKAM",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=AKAM&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Akamai (AKAM)",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 104,
+      "panels": [],
+      "title": "Commodities",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Gold spot price per troy ounce in USD",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 24
+      },
+      "id": 105,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "close",
+              "text": "Gold",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=XAU/USD&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Gold (XAU/USD)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Silver price via iShares Silver Trust ETF",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 24
+      },
+      "id": 106,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "close",
+              "text": "Silver",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=SLV&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Silver (SLV ETF)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "twelvedata"
+      },
+      "description": "Copper price via United States Copper Index Fund ETF",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 24
+      },
+      "id": 107,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "datetime",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "close",
+              "text": "Copper",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "twelvedata"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "values",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.twelvedata.com/time_series?symbol=CPER&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Copper (CPER ETF)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "Henry Hub (FRED DHHNGSP, daily, USD/MMBtu), AECO Alberta spot (Gas Alberta, daily, CAD/GJ, right axis), Japan/Asia LNG (FRED PNGASJPUSDM, monthly, USD/MMBtu). AECO uses a different currency and unit so it is plotted on the right Y-axis.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "USD / MMBtu",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Henry Hub"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#1F60C4",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "AECO (CAD/GJ)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#37872D",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "CAD / GJ"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Japan LNG"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#FF5722",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 111,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "Henry Hub",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "HH",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DHHNGSP&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url_options": {
+            "method": "GET"
+          }
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb"
+          },
+          "hide": false,
+          "query": "from(bucket: \"market_sentiment\")\n  |> range(start: -60d)\n  |> filter(fn: (r) => r._measurement == \"aeco_price\")\n  |> filter(fn: (r) => r._field == \"daily_price\")\n  |> sort(columns: [\"_time\"])\n  |> map(fn: (r) => ({r with _field: \"AECO (CAD/GJ)\"}))",
+          "refId": "AECO"
+        },
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "Japan LNG",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "JP",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=PNGASJPUSDM&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=60",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Natural Gas Prices \u2014 Henry Hub \u00b7 AECO \u00b7 Japan LNG",
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "refresh": "1h",
+  "schemaVersion": 42,
+  "tags": [
+    "financial",
+    "markets",
+    "sentiment"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Market Overview & Sentiment",
+  "uid": "market-overview",
+  "version": 1
+}

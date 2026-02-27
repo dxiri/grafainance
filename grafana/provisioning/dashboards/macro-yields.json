@@ -1,0 +1,1610 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Interest rate and bond market analysis - US, Japan, and German yield curves",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 2,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Market Overview",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/market-overview/market-overview-sentiment"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Forex & Crypto",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/forex-crypto/forex-crypto-monitor"
+    }
+  ],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 100,
+      "panels": [],
+      "title": "US Treasury Yields",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "US Treasury Yield Curve - 2Y, 10Y, and 30Y rates",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Yield %",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "2Y"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#37872D",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "10Y"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#1F60C4",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "30Y"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#8F3BB8",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 16,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "2Y",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS2&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url_options": {
+            "method": "GET"
+          }
+        },
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "10Y",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "B",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url_options": {
+            "method": "GET"
+          }
+        },
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "30Y",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "C",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS30&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "US Treasury Yield Curve",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Current US Treasury yields",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.8",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "value",
+              "text": "US 2Y Yield",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS2&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Current US 10Y Treasury yield",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 16,
+        "y": 4
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.8",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "value",
+              "text": "US 10Y Yield",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Current US 30Y Treasury yield",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 7
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.8",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "value",
+              "text": "US 30Y Yield",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS30&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 102,
+      "panels": [],
+      "title": "GDP Nowcast (Atlanta Fed)",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Atlanta Fed GDPNow model estimate of real GDP growth (seasonally adjusted annual rate). Updated throughout each quarter as new economic data is released.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "% Change (SAAR)",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 50,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "GDP Nowcast"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#1F60C4",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 18,
+        "x": 0,
+        "y": 12
+      },
+      "id": 20,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "GDP Nowcast",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=GDPNOW&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=40",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "GDPNow Forecast History",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Latest Atlanta Fed GDPNow estimate for current quarter GDP growth",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "green",
+                "value": 2
+              },
+              {
+                "color": "dark-green",
+                "value": 4
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 12
+      },
+      "id": 21,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.8",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "value",
+              "text": "GDPNow Q4 2025",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=GDPNOW&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Current GDP Nowcast",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 101,
+      "panels": [],
+      "title": "Global 10Y Benchmark Comparison",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Comparison of US, German, Japanese, and Costa Rican 10-Year Government Bond Yields. US data is daily (FRED DGS10). German, Japanese, and Costa Rican yields use monthly OECD data with ~2 month publication lag.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Yield %",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "US 10Y"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#1F60C4",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Germany 10Y"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#FADE2A",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Japan 10Y"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#FF5722",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "US 10Y",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "US",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url_options": {
+            "method": "GET"
+          }
+        },
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "Germany 10Y",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "DE",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=IRLTLT01DEM156N&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=60",
+          "url_options": {
+            "method": "GET"
+          }
+        },
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "Japan 10Y",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "JP",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=IRLTLT01JPM156N&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=60",
+          "url_options": {
+            "method": "GET"
+          }
+        },
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "Costa Rica 10Y",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "CR",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=CRIIRLTLT01STM&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=60",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Global 10Y Sovereign Bond Yields",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 103,
+      "panels": [],
+      "title": "Yield Curve Spread Analysis",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "10Y-2Y Treasury Spread - Negative values indicate yield curve inversion (recession signal)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "Spread (bps)",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "10Y-2Y Spread",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=T10Y2Y&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "US 10Y-2Y Treasury Spread (Recession Indicator)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Current 10Y-2Y spread value",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": -10,
+                "result": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "INVERTED"
+                },
+                "to": 0
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Normal"
+                },
+                "to": 10
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 32
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.8",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "value",
+              "text": "Spread",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=T10Y2Y&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "10Y-2Y Spread",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "fred"
+      },
+      "description": "Yield curve status indicator",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 32
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.8",
+      "targets": [
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "value",
+              "text": "Curve Status",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "A",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=T10Y2Y&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url_options": {
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Yield Curve",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 9,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "## Yield Curve Interpretation\n\n- **Positive Spread (Green):** Normal yield curve - long-term rates higher than short-term\n- **Negative Spread (Red):** Inverted yield curve - historically a recession predictor\n- **Near Zero:** Flat curve - often precedes economic slowdown\n\n> An inverted yield curve has preceded every US recession since 1955, with only one false signal.",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.4.8",
+      "title": "Understanding the Yield Curve",
+      "type": "text"
+    }
+  ],
+  "refresh": "1h",
+  "schemaVersion": 39,
+  "tags": [
+    "financial",
+    "macro",
+    "bonds",
+    "yields"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1y",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "Macro & Yield Curves",
+  "uid": "macro-yields",
+  "version": 1,
+  "weekStart": ""
+}
