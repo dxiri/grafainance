@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Export a live Grafana dashboard back to its provisioning JSON file, re-masking API keys."""
+"""Export a live Grafana dashboard back to its provisioning JSON file.
+
+Since API keys are now handled by the api-proxy sidecar (not embedded in
+dashboard URLs), this script only needs to reset id/version for clean provisioning.
+"""
 import sys, json, os, requests
 
 GRAFANA_URL = "http://localhost:3000"
@@ -20,8 +24,6 @@ dotenv = load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".
 
 USER = dotenv.get("GF_SECURITY_ADMIN_USER", "admin")
 PASSWD = dotenv.get("GF_SECURITY_ADMIN_PASSWORD", "admin")
-TWELVE_KEY = dotenv.get("TWELVE_DATA_API_KEY", "")
-FRED_KEY = dotenv.get("FRED_API_KEY", "")
 
 uid = sys.argv[1] if len(sys.argv) > 1 else "market-overview"
 outpath = sys.argv[2] if len(sys.argv) > 2 else f"grafana/provisioning/dashboards/{uid}.json"
@@ -36,15 +38,17 @@ dash["version"] = 1
 
 raw = json.dumps(dash, indent=2)
 
-# Re-mask API keys
-if TWELVE_KEY:
-    raw = raw.replace(TWELVE_KEY, "${TWELVE_DATA_API_KEY}")
-if FRED_KEY:
-    raw = raw.replace(FRED_KEY, "${FRED_API_KEY}")
+# Safety check: ensure no real API keys leaked into the exported JSON
+TWELVE_KEY = dotenv.get("TWELVE_DATA_API_KEY", "")
+FRED_KEY = dotenv.get("FRED_API_KEY", "")
+if TWELVE_KEY and TWELVE_KEY in raw:
+    print(f"ERROR: Twelve Data API key found in dashboard JSON! Aborting.", file=sys.stderr)
+    sys.exit(1)
+if FRED_KEY and FRED_KEY in raw:
+    print(f"ERROR: FRED API key found in dashboard JSON! Aborting.", file=sys.stderr)
+    sys.exit(1)
 
 with open(outpath, "w") as f:
     f.write(raw + "\n")
 
-td_count = raw.count("${TWELVE_DATA_API_KEY}")
-fred_count = raw.count("${FRED_API_KEY}")
-print(f"Saved {outpath} ({len(raw)} bytes). Masked {td_count} TD keys, {fred_count} FRED keys.")
+print(f"Saved {outpath} ({len(raw)} bytes). No API keys present in output.")

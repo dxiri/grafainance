@@ -1,0 +1,7 @@
+# Never copy secrets into the Grafana image
+.env
+../.env
+*.env.local
+*.key
+*.pem
+*.crt

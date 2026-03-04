@@ -227,7 +227,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS2&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=DGS2&file_type=json&sort_order=desc&limit=365",
           "url_options": {
             "method": "GET"
           }
@@ -272,7 +272,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=DGS10&file_type=json&sort_order=desc&limit=365",
           "url_options": {
             "method": "GET"
           }
@@ -317,7 +317,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS30&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=DGS30&file_type=json&sort_order=desc&limit=365",
           "url_options": {
             "method": "GET"
           }
@@ -410,7 +410,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS2&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=DGS2&file_type=json&sort_order=desc&limit=1",
           "url_options": {
             "method": "GET"
           }
@@ -502,7 +502,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=DGS10&file_type=json&sort_order=desc&limit=1",
           "url_options": {
             "method": "GET"
           }
@@ -594,7 +594,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS30&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=DGS30&file_type=json&sort_order=desc&limit=1",
           "url_options": {
             "method": "GET"
           }
@@ -757,7 +757,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=GDPNOW&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=40",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=GDPNOW&file_type=json&sort_order=desc&limit=40",
           "url_options": {
             "method": "GET"
           }
@@ -866,7 +866,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=GDPNOW&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=GDPNOW&file_type=json&sort_order=desc&limit=1",
           "url_options": {
             "method": "GET"
           }
@@ -1056,7 +1056,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=DGS10&file_type=json&sort_order=desc&limit=365",
           "url_options": {
             "method": "GET"
           }
@@ -1101,7 +1101,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=IRLTLT01DEM156N&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=60",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=IRLTLT01DEM156N&file_type=json&sort_order=desc&limit=60",
           "url_options": {
             "method": "GET"
           }
@@ -1146,7 +1146,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=IRLTLT01JPM156N&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=60",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=IRLTLT01JPM156N&file_type=json&sort_order=desc&limit=60",
           "url_options": {
             "method": "GET"
           }
@@ -1191,7 +1191,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=CRIIRLTLT01STM&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=60",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=CRIIRLTLT01STM&file_type=json&sort_order=desc&limit=60",
           "url_options": {
             "method": "GET"
           }
@@ -1336,7 +1336,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=T10Y2Y&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=T10Y2Y&file_type=json&sort_order=desc&limit=365",
           "url_options": {
             "method": "GET"
           }
@@ -1458,7 +1458,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=T10Y2Y&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=T10Y2Y&file_type=json&sort_order=desc&limit=1",
           "url_options": {
             "method": "GET"
           }
@@ -1555,7 +1555,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=T10Y2Y&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=T10Y2Y&file_type=json&sort_order=desc&limit=1",
           "url_options": {
             "method": "GET"
           }

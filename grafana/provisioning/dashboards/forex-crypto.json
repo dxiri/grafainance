@@ -164,7 +164,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=EUR/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=EUR/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -290,7 +290,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=GBP/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=GBP/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -416,7 +416,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=USD/JPY&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=USD/JPY&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -542,7 +542,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=USD/CAD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=USD/CAD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -668,7 +668,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=USD/CRC&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=USD/CRC&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -807,7 +807,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=BTC/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=BTC/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -933,7 +933,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=ETH/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=ETH/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -1059,7 +1059,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=XMR/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=XMR/USD&interval=1h&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }

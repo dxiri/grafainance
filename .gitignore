@@ -2,6 +2,21 @@
 .env
 *.env.local
 
+# TLS certificates
+*.pem
+*.key
+*.crt
+*.csr
+certs/
+ssl/
+
+# Docker overrides (may contain secrets)
+docker-compose.override.yml
+docker-compose.prod.yml
+
+# Grafana export with potential secrets
+MarketOverviewSentiment-*.json
+
 # IDE
 .idea/
 .vscode/

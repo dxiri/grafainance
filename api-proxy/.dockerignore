@@ -1,0 +1,7 @@
+# Never copy secrets into the proxy image
+.env
+../.env
+*.env.local
+*.key
+*.pem
+*.crt

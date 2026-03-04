@@ -18,7 +18,7 @@ datasources:
       token: ${INFLUX_TOKEN}
     isDefault: false
 
-  # Infinity Datasource for Twelve Data API
+  # Infinity Datasource for Twelve Data API (via api-proxy)
   - name: TwelveData
     uid: twelvedata
     type: yesoreyeram-infinity-datasource
@@ -26,12 +26,9 @@ datasources:
     isDefault: true
     jsonData:
       oauthPassThru: false
-    secureJsonData:
-      # API key stored securely - use in URLs as: ${__env.TWELVE_DATA_API_KEY}
-      httpHeaderValue1: "${TWELVE_DATA_API_KEY}"
     editable: true
 
-  # Infinity Datasource for FRED API
+  # Infinity Datasource for FRED API (via api-proxy)
   - name: FRED
     uid: fred
     type: yesoreyeram-infinity-datasource
@@ -39,6 +36,4 @@ datasources:
     isDefault: false
     jsonData:
       oauthPassThru: false
-    secureJsonData:
-      httpHeaderValue1: "${FRED_API_KEY}"
     editable: true

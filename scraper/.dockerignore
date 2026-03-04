@@ -1,0 +1,7 @@
+# Never copy secrets into the scraper image
+.env
+../.env
+*.env.local
+*.key
+*.pem
+*.crt

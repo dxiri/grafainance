@@ -405,7 +405,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=VIXCLS&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=90",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=VIXCLS&file_type=json&sort_order=desc&limit=90",
           "url_options": {
             "method": "GET"
           }
@@ -507,7 +507,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=VIXCLS&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=1",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=VIXCLS&file_type=json&sort_order=desc&limit=1",
           "url_options": {
             "method": "GET"
           }
@@ -651,7 +651,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=SPY&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=SPY&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -782,7 +782,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=EWJ&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=EWJ&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -913,7 +913,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=URTH&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=URTH&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -1044,7 +1044,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=MCHI&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=MCHI&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -1188,7 +1188,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=AKAM&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=AKAM&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -1332,7 +1332,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=XAU/USD&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=XAU/USD&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -1463,7 +1463,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=SLV&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=SLV&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -1594,7 +1594,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.twelvedata.com/time_series?symbol=CPER&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000&apikey=${TWELVE_DATA_API_KEY}",
+          "url": "http://api-proxy:8080/twelvedata/time_series?symbol=CPER&interval=1day&start_date=${__from:date:YYYY-MM-DD}&end_date=${__to:date:YYYY-MM-DD}&outputsize=5000",
           "url_options": {
             "method": "GET"
           }
@@ -1712,6 +1712,21 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TTF EU"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#AB47BC",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -1781,7 +1796,7 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DHHNGSP&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=365",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=DHHNGSP&file_type=json&sort_order=desc&limit=365",
           "url_options": {
             "method": "GET"
           }
@@ -1835,13 +1850,58 @@
           "summarizeBy": "",
           "summarizeExpression": "",
           "type": "json",
-          "url": "https://api.stlouisfed.org/fred/series/observations?series_id=PNGASJPUSDM&api_key=${FRED_API_KEY}&file_type=json&sort_order=desc&limit=60",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=PNGASJPUSDM&file_type=json&sort_order=desc&limit=60",
+          "url_options": {
+            "method": "GET"
+          }
+        },
+        {
+          "alias": "",
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "type": "timestamp"
+            },
+            {
+              "selector": "value",
+              "text": "TTF EU",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "dataOverrides": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fred"
+          },
+          "expression": "",
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false,
+            "root_is_not_array": false
+          },
+          "parser": "backend",
+          "queryType": "json",
+          "refId": "TTF",
+          "root_selector": "observations",
+          "seriesCount": 1,
+          "source": "url",
+          "summarizeAlias": "",
+          "summarizeBy": "",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=PNGASEUUSDM&file_type=json&sort_order=desc&limit=60",
           "url_options": {
             "method": "GET"
           }
         }
       ],
-      "title": "Natural Gas Prices \u2014 Henry Hub \u00b7 AECO \u00b7 Japan LNG",
+      "title": "Natural Gas Prices \u2014 Henry Hub \u00b7 AECO \u00b7 Japan LNG \u00b7 TTF EU",
       "type": "timeseries"
     }
   ],
