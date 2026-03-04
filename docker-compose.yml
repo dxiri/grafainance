@@ -16,9 +16,14 @@ services:
       dockerfile: Dockerfile
     container_name: grafainance-grafana
     restart: unless-stopped
-    ports:
-      - "127.0.0.1:3000:3000"
+    # No host port needed — NPM reaches Grafana via shared Docker network
+    # Uncomment for local debugging only:
+    # ports:
+    #   - "127.0.0.1:3000:3000"
     environment:
+      # Proxy settings (must match your NPM domain)
+      - GF_SERVER_ROOT_URL=https://grafainance.appmatrix.cloud
+      - GF_SERVER_DOMAIN=grafainance.appmatrix.cloud
       # Admin credentials (all required — no weak defaults)
       - GF_SECURITY_ADMIN_USER=${GF_SECURITY_ADMIN_USER:?GF_SECURITY_ADMIN_USER is required}
       - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD:?GF_SECURITY_ADMIN_PASSWORD is required}
@@ -67,6 +72,7 @@ services:
       start_period: 30s
     networks:
       - grafainance
+      - reverse-proxy
 
   # ===================
   # InfluxDB Time-Series Database
@@ -170,3 +176,5 @@ volumes:
 networks:
   grafainance:
     driver: bridge
+  reverse-proxy:
+    external: true
