@@ -145,6 +145,8 @@ services:
           python fear_greed_scraper.py
           echo "[$(date)] Running AECO price scraper..."
           python aeco_scraper.py
+          echo "[$(date)] Running LNG price scraper (JKM + TTF)..."
+          python lng_price_scraper.py
           echo "[$(date)] All scrapers complete. Sleeping for 4 hours..."
           sleep 14400
         done

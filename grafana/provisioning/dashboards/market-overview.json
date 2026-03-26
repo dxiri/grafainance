@@ -1608,7 +1608,7 @@
         "type": "datasource",
         "uid": "-- Mixed --"
       },
-      "description": "Henry Hub (FRED DHHNGSP, daily, USD/MMBtu), AECO Alberta spot (Gas Alberta, daily, CAD/GJ, right axis), Japan/Asia LNG (FRED PNGASJPUSDM, monthly, USD/MMBtu). AECO uses a different currency and unit so it is plotted on the right Y-axis.",
+      "description": "Henry Hub (FRED DHHNGSP, daily, USD/MMBtu), AECO Alberta spot (Gas Alberta, daily, CAD/GJ, right axis), JKM Asia LNG (lngpriceindex.com, daily, USD/MMBtu), TTF EU (lngpriceindex.com, daily, USD/MMBtu). AECO uses a different currency and unit so it is plotted on the right Y-axis.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1811,94 +1811,22 @@
           "refId": "AECO"
         },
         {
-          "alias": "",
-          "columns": [
-            {
-              "selector": "date",
-              "text": "Time",
-              "type": "timestamp"
-            },
-            {
-              "selector": "value",
-              "text": "Japan LNG",
-              "type": "number"
-            }
-          ],
-          "computed_columns": [],
-          "dataOverrides": [],
           "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "fred"
+            "type": "influxdb",
+            "uid": "influxdb"
           },
-          "expression": "",
-          "filterExpression": "",
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
           "hide": false,
-          "json_options": {
-            "columnar": false,
-            "root_is_not_array": false
-          },
-          "parser": "backend",
-          "queryType": "json",
-          "refId": "JP",
-          "root_selector": "observations",
-          "seriesCount": 1,
-          "source": "url",
-          "summarizeAlias": "",
-          "summarizeBy": "",
-          "summarizeExpression": "",
-          "type": "json",
-          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=PNGASJPUSDM&file_type=json&sort_order=desc&limit=60",
-          "url_options": {
-            "method": "GET"
-          }
+          "query": "from(bucket: \"market_sentiment\")\n  |> range(start: -365d)\n  |> filter(fn: (r) => r._measurement == \"jkm_price\")\n  |> filter(fn: (r) => r._field == \"price\")\n  |> sort(columns: [\"_time\"])\n  |> map(fn: (r) => ({r with _field: \"Japan LNG\"}))",
+          "refId": "JP"
         },
         {
-          "alias": "",
-          "columns": [
-            {
-              "selector": "date",
-              "text": "Time",
-              "type": "timestamp"
-            },
-            {
-              "selector": "value",
-              "text": "TTF EU",
-              "type": "number"
-            }
-          ],
-          "computed_columns": [],
-          "dataOverrides": [],
           "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "fred"
+            "type": "influxdb",
+            "uid": "influxdb"
           },
-          "expression": "",
-          "filterExpression": "",
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
           "hide": false,
-          "json_options": {
-            "columnar": false,
-            "root_is_not_array": false
-          },
-          "parser": "backend",
-          "queryType": "json",
-          "refId": "TTF",
-          "root_selector": "observations",
-          "seriesCount": 1,
-          "source": "url",
-          "summarizeAlias": "",
-          "summarizeBy": "",
-          "summarizeExpression": "",
-          "type": "json",
-          "url": "http://api-proxy:8080/fred/fred/series/observations?series_id=PNGASEUUSDM&file_type=json&sort_order=desc&limit=60",
-          "url_options": {
-            "method": "GET"
-          }
+          "query": "from(bucket: \"market_sentiment\")\n  |> range(start: -365d)\n  |> filter(fn: (r) => r._measurement == \"ttf_price\")\n  |> filter(fn: (r) => r._field == \"price\")\n  |> sort(columns: [\"_time\"])\n  |> map(fn: (r) => ({r with _field: \"TTF EU\"}))",
+          "refId": "TTF"
         }
       ],
       "title": "Natural Gas Prices \u2014 Henry Hub \u00b7 AECO \u00b7 Japan LNG \u00b7 TTF EU",
